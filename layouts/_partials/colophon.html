@@ -1,0 +1,10 @@
+<footer class="colophon wrap">
+  <span>© {{ now.Year }} {{ site.Params.author }}</span>
+  <ul>
+    {{ range site.Params.links }}
+      <li><a href="{{ .url }}" rel="me noopener noreferrer">{{ .name }}</a></li>
+    {{ end }}
+    <li><a href="mailto:{{ site.Params.email }}">Email</a></li>
+    <li><a href="/blog/index.xml">RSS</a></li>
+  </ul>
+</footer>

@@ -1,0 +1,8 @@
+<header class="masthead wrap">
+  <a class="masthead__home" href="/">{{ site.Title }}</a>
+  <nav class="nav" aria-label="Main navigation">
+    {{ range site.Menus.main }}
+      <a href="{{ .URL }}"{{ if $.IsMenuCurrent "main" . }} aria-current="page"{{ else if $.HasMenuCurrent "main" . }} aria-current="true"{{ end }}>{{ .Name }}</a>
+    {{ end }}
+  </nav>
+</header>

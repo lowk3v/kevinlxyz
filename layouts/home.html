@@ -1,0 +1,40 @@
+{{ define "main" }}
+
+<section class="hero">
+  <p class="hero__eyebrow">{{ site.Params.role }}</p>
+  <h1 class="hero__name">{{ site.Params.author }}</h1>
+  <p class="hero__tagline">{{ site.Params.tagline }}</p>
+  <p class="hero__now"><b>Now</b>{{ site.Params.now }}</p>
+</section>
+
+{{ with site.Data.achievements }}
+<section class="section">
+  <div class="section__head">
+    <h2 class="section__title">Achievements</h2>
+    <a class="section__more" href="/achievements/">View all →</a>
+  </div>
+  {{ partial "ledger-achievements.html" (dict "items" . "limit" 4) }}
+</section>
+{{ end }}
+
+{{ with where site.RegularPages "Section" "blog" }}
+<section class="section">
+  <div class="section__head">
+    <h2 class="section__title">Recent writing</h2>
+    <a class="section__more" href="/blog/">All posts →</a>
+  </div>
+  {{ partial "ledger-posts.html" (dict "pages" . "limit" 5) }}
+</section>
+{{ end }}
+
+<section class="section">
+  <div class="section__head">
+    <h2 class="section__title">Profile</h2>
+  </div>
+  <p class="lede">
+    Full CV with experience, skills, and projects.
+  </p>
+  <a class="btn" href="/cv/">View CV →</a>
+</section>
+
+{{ end }}

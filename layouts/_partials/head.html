@@ -1,0 +1,26 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ if .IsHome }}{{ site.Title }} — {{ site.Params.role }}{{ else }}{{ .Title }} · {{ site.Title }}{{ end }}</title>
+<meta name="description" content="{{ or .Description site.Params.description | plainify | truncate 160 }}">
+<link rel="canonical" href="{{ .Permalink }}">
+
+{{- /* Change the skin via params.skin in hugo.toml: "celadon" or "brass" */ -}}
+{{- $skin := site.Params.skin | default "celadon" -}}
+{{- $path := printf "css/skins/%s.css" $skin -}}
+{{- $main := resources.Get $path -}}
+{{- if not $main }}{{ errorf "Skin %q not found — check params.skin in hugo.toml" $skin }}{{ end -}}
+{{- $syn  := resources.Get "css/syntax.css" -}}
+{{- $sev  := resources.Get "css/severity.css" -}}
+{{- $css  := slice $main $syn $sev | resources.Concat (printf "css/%s.css" $skin) | minify | fingerprint "sha384" -}}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+{{ with .OutputFormats.Get "rss" -}}
+<link rel="alternate" type="application/rss+xml" title="{{ site.Title }}" href="{{ .Permalink }}">
+{{- end }}
+
+<meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
+<meta property="og:title" content="{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }}{{ end }}">
+<meta property="og:description" content="{{ or .Description site.Params.description | plainify | truncate 160 }}">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta name="twitter:card" content="summary">

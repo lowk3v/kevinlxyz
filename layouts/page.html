@@ -1,0 +1,14 @@
+{{ define "main" }}
+<article>
+  <header class="pagehead">
+    {{ if and .Date (eq .Section "blog") }}
+      <p class="pagehead__date"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02.01.2006" }}</time> · {{ .ReadingTime }} min read</p>
+    {{ end }}
+    <h1 class="pagehead__title">{{ .Title }}</h1>
+    {{ with .Description }}<p class="pagehead__sub">{{ . }}</p>{{ end }}
+  </header>
+  <div class="prose">
+    {{ .Content }}
+  </div>
+</article>
+{{ end }}

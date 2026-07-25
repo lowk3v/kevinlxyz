@@ -1,0 +1,13 @@
+{{- /*
+  Severity label, used inline.
+    {{< sev critical >}}
+    {{< sev high "CVSS 8.1" >}}
+    {{< sev medium "CVE-2026-1337" >}}
+*/ -}}
+{{- $lvl := lower (.Get 0) -}}
+{{- $ok := slice "critical" "high" "medium" "low" "info" -}}
+{{- if not (in $ok $lvl) -}}
+  {{- errorf "sev: invalid level %q (%s) — %s" $lvl (delimit $ok ", ") .Position -}}
+{{- end -}}
+{{- $labels := dict "critical" "Critical" "high" "High" "medium" "Medium" "low" "Low" "info" "Info" -}}
+<span class="sev sev--{{ $lvl }}">{{ index $labels $lvl }}{{ with .Get 1 }}<span class="sev__note">{{ . }}</span>{{ end }}</span>

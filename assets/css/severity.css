@@ -1,0 +1,86 @@
+/* ══════════════════════════════════════════════════════════════════
+   SEVERITY — dùng chung cho mọi skin, KHÔNG phụ thuộc biến màu skin.
+   Đây là ngân sách chú ý của trang. Đừng dùng các màu này ở chỗ khác.
+   ══════════════════════════════════════════════════════════════════ */
+.sev {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: .6875rem;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  line-height: 1.5;
+  white-space: nowrap;
+  padding: .16em .55em;
+  border-radius: 3px;
+  border: 1px solid currentColor;
+  background: color-mix(in srgb, currentColor 13%, transparent);
+  vertical-align: .05em;
+}
+
+.sev--critical { color: #e67179; }
+.sev--high     { color: #dd8140; }
+.sev--medium   { color: #cbab4a; }
+.sev--low      { color: #749f8a; }
+.sev--info     { color: #8d97a6; }
+
+/* Chú thích phụ: phân biệt bằng nét chữ, KHÔNG bằng opacity —
+   opacity làm tụt tương phản xuống dưới ngưỡng WCAG. */
+.sev__note {
+  font-weight: 400;
+  letter-spacing: .04em;
+  text-transform: none;
+  margin-left: .5em;
+}
+
+/* ── Khối finding ────────────────────────────────────────────────── */
+.finding {
+  border: 1px solid var(--line, #222836);
+  border-left: 3px solid currentColor;
+  background: var(--surface, #151922);
+  padding: 1.15rem 1.35rem 1.25rem;
+  margin-block: 1.75rem;
+  border-radius: 0 3px 3px 0;
+}
+.finding--critical { color: #e67179; }
+.finding--high     { color: #dd8140; }
+.finding--medium   { color: #cbab4a; }
+.finding--low      { color: #749f8a; }
+.finding--info     { color: #8d97a6; }
+
+.finding__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: .6rem .85rem;
+  margin-bottom: .85rem;
+}
+.finding__title {
+  font-family: var(--font-display, inherit);
+  font-size: 1.0625rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--text, #dde2ea);
+  letter-spacing: -.008em;
+}
+.finding__id {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: .6875rem;
+  letter-spacing: .08em;
+  color: var(--muted, #8892a3);
+}
+/* Thân khối trở về màu chữ thường — chỉ viền và nhãn mang màu severity */
+.finding__body { color: var(--text, #dde2ea); font-size: .96875rem; }
+.finding__body > * + * { margin-top: .9em; }
+.finding__body a { color: var(--accent, #7ea2cc); }
+.finding__body :is(h4, h5) {
+  font-family: var(--font-mono, monospace);
+  font-size: .6875rem;
+  font-weight: 500;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--muted, #8892a3);
+  margin-top: 1.4em;
+}
+.finding__body pre { font-size: .78125rem; }

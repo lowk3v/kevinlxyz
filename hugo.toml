@@ -1,0 +1,54 @@
+# ─── Basic info ──────────────────────────────────────────────────────
+baseURL      = "https://kevinl.xyz"
+languageCode = "en-us"
+title        = "KevinLxyz"
+enableRobotsTXT = true
+
+# Remove tracking params from URLs, keep them clean
+disableKinds = ["taxonomy", "term"]
+
+[pagination]
+  pagerSize = 10
+
+# ─── Personal info: edit here, no need to touch layouts ──────────────
+[params]
+  skin        = "signal"      # "celadon" | "brass" | "signal"
+  author      = "KevinL.xyz"
+  role        = "Offensive Security"
+  tagline     = "Just a guy who likes breaking things..."
+  now         = "Pentester & Bug Bounty Hunter"
+  description = "My playground, writeups, tool sharing, and random thoughts"
+  email       = "lowk3v@gmail.com"
+  cv          = "/cv.pdf"
+
+[[params.links]]
+  name = "GitHub"
+  url  = "https://github.com/lowk3v"
+[[params.links]]
+  name = "LinkedIn"
+  url  = "https://linkedin.com/in/lowk3v"
+
+# ─── Menu ────────────────────────────────────────────────────────────
+[[menu.main]]
+  name = "Achievements"
+  pageRef = "/achievements"
+  weight = 1
+[[menu.main]]
+  name = "Curriculum Vitae"
+  pageRef = "/cv"
+  weight = 2
+[[menu.main]]
+  name = "Blog"
+  pageRef = "/blog"
+  weight = 3
+
+# ─── Markdown ────────────────────────────────────────────────────────
+[markup]
+  [markup.goldmark.renderer]
+    unsafe = false          # SECURITY: block raw HTML embedded in Markdown
+  [markup.highlight]
+    noClasses = false       # use class + CSS instead of inline style (CSP-friendly)
+    style = "onedark"
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel   = 3

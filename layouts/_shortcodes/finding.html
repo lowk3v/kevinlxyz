@@ -1,0 +1,25 @@
+{{- /*
+  Block that presents a finding.
+    {{< finding level="high" title="SQL injection at /api/search" id="F-003" cvss="8.1" >}}
+    Ordinary Markdown content.
+    {{< /finding >}}
+*/ -}}
+{{- $lvl := lower (.Get "level" | default "info") -}}
+{{- $ok := slice "critical" "high" "medium" "low" "info" -}}
+{{- if not (in $ok $lvl) -}}
+  {{- errorf "finding: invalid level %q (%s) — %s" $lvl (delimit $ok ", ") .Position -}}
+{{- end -}}
+{{- if not (.Get "title") -}}
+  {{- errorf "finding: missing title parameter — %s" .Position -}}
+{{- end -}}
+{{- $labels := dict "critical" "Critical" "high" "High" "medium" "Medium" "low" "Low" "info" "Info" -}}
+<div class="finding finding--{{ $lvl }}">
+  <div class="finding__head">
+    <span class="sev sev--{{ $lvl }}">{{ index $labels $lvl }}{{ with .Get "cvss" }}<span class="sev__note">CVSS {{ . }}</span>{{ end }}</span>
+    <h3 class="finding__title">{{ .Get "title" }}</h3>
+    {{ with .Get "id" }}<span class="finding__id">{{ . }}</span>{{ end }}
+  </div>
+  <div class="finding__body">
+    {{ .Inner | markdownify }}
+  </div>
+</div>

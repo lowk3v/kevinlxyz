@@ -1,0 +1,21 @@
+{{- /* Params: dict "items" <slice> "limit" <int|nil> */ -}}
+{{- $items := .items -}}
+{{- with .limit }}{{ $items = first . $items }}{{ end -}}
+<ol class="ledger">
+  {{- range $items }}
+  <li class="ledger__row">
+    <div class="ledger__key">{{ .year }}</div>
+    <div class="ledger__body">
+      <h3 class="ledger__title">
+        {{- if .url -}}
+          <a href="{{ .url }}" rel="noopener noreferrer">{{ .title }}</a>
+        {{- else -}}
+          {{ .title }}
+        {{- end -}}
+      </h3>
+      {{ with .org }}<p class="ledger__meta">{{ . }}</p>{{ end }}
+      {{ with .note }}<p class="ledger__note">{{ . }}</p>{{ end }}
+    </div>
+  </li>
+  {{- end }}
+</ol>

@@ -1,0 +1,8 @@
+{{ define "main" }}
+<header class="pagehead">
+  <h1 class="pagehead__title">{{ .Title }}</h1>
+  {{ with .Description }}<p class="pagehead__sub">{{ . }}</p>{{ end }}
+</header>
+{{ with .Content }}<div class="prose prose--intro">{{ . }}</div>{{ end }}
+{{ partial "ledger-posts.html" (dict "pages" .RegularPages) }}
+{{ end }}

@@ -1,0 +1,17 @@
+{{- /* Params: dict "pages" <pages> "limit" <int|nil> */ -}}
+{{- $pages := .pages -}}
+{{- with .limit }}{{ $pages = first . $pages }}{{ end -}}
+<ol class="ledger">
+  {{- range $pages }}
+  <li class="ledger__row">
+    <div class="ledger__key">
+      <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02.01.2006" }}</time>
+    </div>
+    <div class="ledger__body">
+      <h3 class="ledger__title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+      {{ with .Description }}<p class="ledger__note">{{ . }}</p>{{ end }}
+      <p class="ledger__meta">{{ .ReadingTime }} min read</p>
+    </div>
+  </li>
+  {{- end }}
+</ol>
