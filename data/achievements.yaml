@@ -1,8 +1,17 @@
 - year: "2026"
+  title: "Join Synack Red Team (SRT)"
+  org: "Synack"
+  url: "https://synack.com"
+
+- year: "2026"
   title: "OffSec Web Expert (OSWE)"
   org: "Offensive Security"
   url: "https://credentials.offsec.com/ecd5e70e-e3b9-4b08-9124-98784bfc59ae#acc.8C0tXkZl"
 
+- year: "2025"
+  title: "Get position Red Team Leader"
+  org: "Private company"
+  
 - year: "2025"
   title: "AWS Certified Solutions Architect – Associate"
   org: "Amazon Web Services"
@@ -26,6 +35,10 @@
   note: "LowK"
 
 - year: "2021"
+  title: "Get position Senior Application Security Engineer in finance and blockchain fields"
+  org: ""
+
+- year: "2021"
   title: "Bug bounty: Deserialization of untrusted data, rewarded $10,000"
   org: "Pornhub on Hackerone"
   url: "#private-link"
@@ -34,6 +47,10 @@
   title: "CVE-2019-17495 - CSS injection vulnerability in Swagger UI"
   org: "Swagger UI"
   url: "https://github.com/lowk3v/CSS-injection-in-Swagger-UI"
+
+- year: "2019"
+  title: "Get position Senior Penetration Tester"
+  org: ""
 
 - year: "2019"
   title: "Bachelor of Information Security Engineering"
