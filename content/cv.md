@@ -3,8 +3,6 @@ title: "CV"
 description: "Software engineer, 5 years of experience in backend and distributed systems."
 ---
 
-[Download the PDF](/cv.pdf)
-
 ## Experience
 
 ### Red Team Leader — Secuwall, UAE - Dubai
